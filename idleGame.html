@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>jClicker</h2>
+
+<p>It's every idle clicker ever.</p>
+
+<!--buttons--> 
+<button type="button" onclick="myFunction()">Count!</button>
+<button type="button" id="aclick" onclick="setInterval(autoClick, 2000); autoClickBuy(); autoClickCount()">Autoclicker!</button>
+<button type="button" id="granny" onclick="setInterval(autoClicker, 1000); autoClickerBuy()">Buy a slave!</button>
+<button type="button" id="t14" onclick="setInterval(tank, 500); tankBuy()">Buy a T14 Heavy Tank!</button>
+
+<!--counter output--> 
+<p id="count">0</p>
+
+<p id="clickCount" style="inline">0</p>
+<p id="nanCount">0</p>
+<p id="t14Count">0</p>
+
+<script>
+//counter
+
+var counter = 0;
+var clickerCount = 0;
+//get button info
+var x = document.getElementById("aclick");
+var y = document.getElementById("granny");
+var z = document.getElementById("t14");
+//hide purchase buttons
+x.style.display = "none";
+y.style.display = "none";
+z.style.display = "none";
+
+//adding count functions---------------------------------------------------------------------------------------------------------------------------------------------
+//count function
+const add = (function () {
+  return function () {
+    hideShow();
+    counter += 1; return counter;
+     
+  }
+})();
+  
+
+//autoclick function
+const run = (function(){
+  return function() {
+    hideShow();
+    counter += 1; return counter;}
+})();
+
+//slave function
+const nan = (function(){
+  return function() {counter += 50; return counter;}
+})();
+
+//buy autoclick
+const purchase = (function(){
+    return function() {counter -= 10; return counter;}
+})();
+
+//buy slave
+const purchases = (function(){
+    return function() {counter -= 200; return counter;}
+})();
+
+
+//tank function
+const bang = (function(){
+  return function() {hideShow() ;counter += 500; return counter;}
+})();
+
+//buy tank
+const purchasen = (function(){
+    return function() {counter -= 10000; return counter;}
+})();
+
+//track how many autoclickers are bought
+const clickCounter = (function () {
+  return function () {clickerCount += 1; return clickerCount;}
+})();
+//button click process-----------------------------------------------------------------------------------------------------------------------------------------
+
+//user clicks count
+function myFunction(){
+  document.getElementById("count").innerHTML = add();
+}
+
+//user clicks autoclicker
+function autoClick(){
+    {document.getElementById("count").innerHTML = run();}
+}
+//if user has money then buy autoclicker
+function autoClickBuy(){
+  if(counter>=10){document.getElementById("count").innerHTML = purchase();}
+}
+function autoClickCount(){
+	document.getElementById("clickCount").innerHTML = clickCounter();
+}
+
+
+
+//user clicks slave
+function autoClicker(){
+  document.getElementById("count").innerHTML = nan();
+}
+//if user has money then buy slave
+function autoClickerBuy(){
+  if(counter>=200){document.getElementById("count").innerHTML = purchases();}
+}
+
+
+//user clicks tanks
+function tank(){
+  document.getElementById("count").innerHTML = bang();
+}
+//if user has money then buy slave
+function tankBuy(){
+  if(counter>=10000){document.getElementById("count").innerHTML = purchasen();}
+}
+
+
+//hide and show button function
+function hideShow(){
+    if(counter >= 10){
+        x.style.display = "inline";
+    }else{
+      x.style.display = "none";
+    }
+    if(counter >= 200){
+        y.style.display = "inline";
+    }else{
+      y.style.display = "none";
+    }
+    if(counter >= 10000){
+        z.style.display = "inline";
+    }else{
+      z.style.display = "none";
+    }
+}
+</script>
+
+</body>
+</html>
