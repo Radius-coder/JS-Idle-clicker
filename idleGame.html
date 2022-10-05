@@ -8,16 +8,16 @@
 
 <!--buttons--> 
 <button type="button" onclick="myFunction()">Count!</button>
-<button type="button" id="aclick" onclick="setInterval(autoClick, 2000); autoClickBuy(); autoClickCount()">Autoclicker!</button>
-<button type="button" id="granny" onclick="setInterval(autoClicker, 1000); autoClickerBuy()">Buy a slave!</button>
-<button type="button" id="t14" onclick="setInterval(tank, 500); tankBuy()">Buy a T14 Heavy Tank!</button>
+<button type="button" id="aclick" onclick="setInterval(autoClick, 2000); autoClickBuy(); autoClickCount();">Autoclicker!</button>
+<button type="button" id="granny" onclick="setInterval(autoClicker, 1000); autoClickerBuy(); autoClickerCount();">Buy a slave!</button>
+<button type="button" id="t14" onclick="setInterval(tank, 500); tankBuy(); tankCount();">Buy a T14 Heavy Tank!</button>
 
 <!--counter output--> 
 <p id="count">0</p>
 <p>Autoclickers:</p>
 <p id="clickCount" style="inline">0</p>
 <p>Slaves:</p>
-<p id="nanCount">0</p>
+<p id="slaveCount">0</p>
 <p>T14 Heavy Tanks:</p>
 <p id="t14Count">0</p>
 <p>Autoclicker price:</p>
@@ -31,6 +31,8 @@
 var counter = 0;
 //track how many autoclickers have been bought
 var clickerCount = 0;
+var slavesCount = 0;
+var t14sCount = 0;
 //price of autoclickers
 let autoPrice = 10;
 //price of slaves
@@ -68,7 +70,7 @@ const run = (function(){
 
 //slave function
 const nan = (function(){
-  return function() {counter += 50; return counter;}
+  return function() {hideShow(); counter += 50; return counter;}
 })();
 
 //buy autoclick
@@ -93,9 +95,17 @@ const purchasen = (function(){
     return function() {counter -= t14Price; t14Price = t14Price/0.75; return counter;}
 })();
 
+//Track how many clickers bought--------------------------------------------------------------------------------------------------------------------
+
 //track how many autoclickers are bought
 const clickCounter = (function () {
   return function () {clickerCount += 1; return clickerCount;}
+})();
+const slaveCounter = (function () {
+  return function () {slavesCount += 1; return slavesCount;}
+})();
+const t14Counter = (function () {
+  return function () {t14sCount += 1; return t14sCount;}
 })();
 //button click process-----------------------------------------------------------------------------------------------------------------------------------------
 
@@ -127,7 +137,7 @@ function autoClickerBuy(){
   if(counter>=200){document.getElementById("count").innerHTML = purchases();document.getElementById("slavepriceOut").innerHTML = slavePrice;}
 }
 function autoClickerCount(){
-	document.getElementById("nanCount").innerHTML = clickCounter();
+	document.getElementById("slaveCount").innerHTML = slaveCounter();
 }
 
 //user clicks tanks
@@ -139,7 +149,7 @@ function tankBuy(){
   if(counter>=10000){document.getElementById("count").innerHTML = purchasen();document.getElementById("t14priceOut").innerHTML = t14Price;}
 }
 function tankCount(){
-	document.getElementById("t14Count").innerHTML = clickCounter();
+	document.getElementById("t14Count").innerHTML = t14Counter();
 }
 
 //hide and show button function
