@@ -14,16 +14,31 @@
 
 <!--counter output--> 
 <p id="count">0</p>
-
+<p>Autoclickers:</p>
 <p id="clickCount" style="inline">0</p>
+<p>Slaves:</p>
 <p id="nanCount">0</p>
+<p>T14 Heavy Tanks:</p>
 <p id="t14Count">0</p>
-
+<p>Autoclicker price:</p>
+<p id ="autopriceOut">10</p>
+<p>Slave price:</p>
+<p id ="slavepriceOut">200</p>
+<p>T14 price:</p>
+<p id ="t14priceOut">10000</p>
 <script>
 //counter
-
 var counter = 0;
+//track how many autoclickers have been bought
 var clickerCount = 0;
+//price of autoclickers
+let autoPrice = 10;
+//price of slaves
+let slavePrice =  200;
+//price of t14
+let t14Price = 10000;
+
+
 //get button info
 var x = document.getElementById("aclick");
 var y = document.getElementById("granny");
@@ -58,12 +73,13 @@ const nan = (function(){
 
 //buy autoclick
 const purchase = (function(){
-    return function() {counter -= 10; return counter;}
+    return function() {counter -= autoPrice; autoPrice = autoPrice/0.75; return counter; }
 })();
+
 
 //buy slave
 const purchases = (function(){
-    return function() {counter -= 200; return counter;}
+    return function() {counter -= slavePrice; slavePrice = slavePrice/0.75; return counter;}
 })();
 
 
@@ -74,7 +90,7 @@ const bang = (function(){
 
 //buy tank
 const purchasen = (function(){
-    return function() {counter -= 10000; return counter;}
+    return function() {counter -= t14Price; t14Price = t14Price/0.75; return counter;}
 })();
 
 //track how many autoclickers are bought
@@ -94,7 +110,7 @@ function autoClick(){
 }
 //if user has money then buy autoclicker
 function autoClickBuy(){
-  if(counter>=10){document.getElementById("count").innerHTML = purchase();}
+  if(counter>=autoPrice){document.getElementById("count").innerHTML = purchase();document.getElementById("autopriceOut").innerHTML = autoPrice;}
 }
 function autoClickCount(){
 	document.getElementById("clickCount").innerHTML = clickCounter();
@@ -108,9 +124,11 @@ function autoClicker(){
 }
 //if user has money then buy slave
 function autoClickerBuy(){
-  if(counter>=200){document.getElementById("count").innerHTML = purchases();}
+  if(counter>=200){document.getElementById("count").innerHTML = purchases();document.getElementById("slavepriceOut").innerHTML = slavePrice;}
 }
-
+function autoClickerCount(){
+	document.getElementById("nanCount").innerHTML = clickCounter();
+}
 
 //user clicks tanks
 function tank(){
@@ -118,23 +136,25 @@ function tank(){
 }
 //if user has money then buy slave
 function tankBuy(){
-  if(counter>=10000){document.getElementById("count").innerHTML = purchasen();}
+  if(counter>=10000){document.getElementById("count").innerHTML = purchasen();document.getElementById("t14priceOut").innerHTML = t14Price;}
 }
-
+function tankCount(){
+	document.getElementById("t14Count").innerHTML = clickCounter();
+}
 
 //hide and show button function
 function hideShow(){
-    if(counter >= 10){
+    if(counter >= autoPrice){
         x.style.display = "inline";
     }else{
       x.style.display = "none";
     }
-    if(counter >= 200){
+    if(counter >= slavePrice){
         y.style.display = "inline";
     }else{
       y.style.display = "none";
     }
-    if(counter >= 10000){
+    if(counter >= t14Price){
         z.style.display = "inline";
     }else{
       z.style.display = "none";
