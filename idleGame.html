@@ -13,6 +13,7 @@
 <button type="button" id="t14" onclick="setInterval(tank, 500); tankBuy(); tankCount();">Buy a T14 Heavy Tank!</button>
 
 <!--counter output--> 
+<p>Money:</p>
 <p id="count">0</p>
 <p>Autoclickers:</p>
 <p id="clickCount" style="inline">0</p>
@@ -134,7 +135,7 @@ function autoClicker(){
 }
 //if user has money then buy slave
 function autoClickerBuy(){
-  if(counter>=200){document.getElementById("count").innerHTML = purchases();document.getElementById("slavepriceOut").innerHTML = slavePrice;}
+  if(counter>=slavePrice){document.getElementById("count").innerHTML = purchases();document.getElementById("slavepriceOut").innerHTML = slavePrice;}
 }
 function autoClickerCount(){
 	document.getElementById("slaveCount").innerHTML = slaveCounter();
@@ -146,7 +147,7 @@ function tank(){
 }
 //if user has money then buy slave
 function tankBuy(){
-  if(counter>=10000){document.getElementById("count").innerHTML = purchasen();document.getElementById("t14priceOut").innerHTML = t14Price;}
+  if(counter>=t14Price){document.getElementById("count").innerHTML = purchasen();document.getElementById("t14priceOut").innerHTML = t14Price;}
 }
 function tankCount(){
 	document.getElementById("t14Count").innerHTML = t14Counter();
