@@ -9,3 +9,8 @@ The game needs picture buttons for a better user experience.
 It could also do with music and sounds.
 
 The page needs to store cookies so user progress is saved when they leave.
+
+
+## What needs fixed
+
+When user purchases a counter the price is made into a float. This needs converted back to an integer.
