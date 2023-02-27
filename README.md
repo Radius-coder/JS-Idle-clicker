@@ -1,5 +1,5 @@
 ## What is it
-It is an idle clicker web-based game. It uses counters to track money and buttons to increase the counters.
+It is an idle clicker web-based game. It uses counters to track money and buttons to increase the counters. Prices of counters increase as the user buys more. Buttons are hidden if the user does not have enough.
 
 ![image](https://user-images.githubusercontent.com/67561957/221523572-424ecf08-d270-4950-9bba-25d1f0e000b2.png)
 
@@ -17,6 +17,8 @@ Need to remove border round images.
 Need to find better images.
 
 Need to stop user being able to TAB onto a button and holding enter.
+
+Need to fix bug where autoclicker stays avaiable for purchase, when the user has not got enough money, until the count goes up by atleast one again.
 
 ## Changelog
 
