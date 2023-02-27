@@ -19,7 +19,7 @@ body {background-color: #51D6D2;}
  <button type="button" onclick="myFunction()"><img src="count.png"; style="height:60px; width:60px";></button>
  <button type="button" id="aclick" onclick="setInterval(autoClick, 2000); autoClickBuy(); autoClickCount();"><img src="cursor.png"; style="height:60px; width:60px";></button>
  <button type="button" id="granny" onclick="setInterval(autoClicker, 1000); autoClickerBuy(); autoClickerCount();"><img src="slave.png"; style="height:60px; width:60px";></button>
- <button type="button" id="t14" onclick="setInterval(tank, 500); tankBuy(); tankCount();"><img src="tank.png"; style="height:60px; width:60px";>!</button>
+ <button type="button" id="t14" onclick="setInterval(tank, 500); tankBuy(); tankCount();"><img src="tank.png"; style="height:60px; width:60px";></button>
 </div>
 
 <!--counter output--> 
@@ -108,17 +108,17 @@ const bang = (function(){
 
 //buy autoclick
 const purchase = (function(){
-    return function() {counter -= autoPrice; autoPrice = autoPrice/0.75; autoPrice = autoPrice.toFixed(2); return counter; }
+    return function() {counter -= autoPrice; autoPrice = autoPrice/0.75; autoPrice = autoPrice.toFixed(2); return counter.toFixed(2); }
 })();
 
 //buy slave
 const purchases = (function(){
-    return function() {counter -= slavePrice; slavePrice = math.round(slavePrice/0.75); return counter;}
+    return function() {counter -= slavePrice; slavePrice = slavePrice/0.75; slavePrice = slavePrice.toFixed(2); return counter.toFixed(2);}
 })();
 
 //buy tank
 const purchasen = (function(){
-    return function() {counter -= t14Price; t14Price = math.round(t14Price/0.75); return counter;}
+    return function() {counter -= t14Price; t14Price = t14Price/0.75; t14Price = t14Price.toFixed(2); return counter.toFixed(2);}
 })();
 
 
