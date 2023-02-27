@@ -1,100 +1,129 @@
 <!DOCTYPE html>
 <html>
+<head>
+<style>
+h2 {text-align: center;}
+p {text-align: center;}
+table {margin-left: auto; margin-right: auto;}
+body {background-color: #51D6D2;}
+</style>
+</head>
 <body>
 
 <h2>jClicker</h2>
 
 <p>It's every idle clicker ever.</p>
 
-<!--buttons--> 
-<button type="button" onclick="myFunction()">Count!</button>
-<button type="button" id="aclick" onclick="setInterval(autoClick, 2000); autoClickBuy(); autoClickCount();">Autoclicker!</button>
-<button type="button" id="granny" onclick="setInterval(autoClicker, 1000); autoClickerBuy(); autoClickerCount();">Buy a slave!</button>
-<button type="button" id="t14" onclick="setInterval(tank, 500); tankBuy(); tankCount();">Buy a T14 Heavy Tank!</button>
+<!--buttons-->
+<div style="text-align: center">
+ <button type="button" onclick="myFunction()"><img src="count.png"; style="height:60px; width:60px";></button>
+ <button type="button" id="aclick" onclick="setInterval(autoClick, 2000); autoClickBuy(); autoClickCount();"><img src="cursor.png"; style="height:60px; width:60px";></button>
+ <button type="button" id="granny" onclick="setInterval(autoClicker, 1000); autoClickerBuy(); autoClickerCount();"><img src="slave.png"; style="height:60px; width:60px";></button>
+ <button type="button" id="t14" onclick="setInterval(tank, 500); tankBuy(); tankCount();"><img src="tank.png"; style="height:60px; width:60px";>!</button>
+</div>
 
 <!--counter output--> 
 <p>Money:</p>
 <p id="count">0</p>
-<p>Autoclickers:</p>
-<p id="clickCount" style="inline">0</p>
-<p>Slaves:</p>
-<p id="slaveCount">0</p>
-<p>T14 Heavy Tanks:</p>
-<p id="t14Count">0</p>
-<p>Autoclicker price:</p>
-<p id ="autopriceOut">10</p>
-<p>Slave price:</p>
-<p id ="slavepriceOut">200</p>
-<p>T14 price:</p>
-<p id ="t14priceOut">10000</p>
+
+<div style="margin: 0px auto">
+<table>
+ <tr>
+  <th>Autoclickers:</th>
+  <th>Slaves:</th>
+  <th>T14 Heavy Tanks:</th>
+ </tr>
+ <tr>
+  <th id="clickCount">0</th>
+  <th id="slaveCount">0</th>
+  <th id="t14Count">0</th>
+ </tr>
+ <tr><th><br></th></tr>
+ <tr>
+  <th>Autoclicker price:</th>
+  <th>Slave price:</th>
+  <th>T14 price:</th>
+ </tr>
+ <tr>
+  <th id ="autopriceOut">10</th>
+  <th id ="slavepriceOut">200</th>
+  <th id ="t14priceOut">10000</th>
+</table>
+</div>
+
+
 <script>
 //counter
 var counter = 0;
+
 //track how many autoclickers have been bought
 var clickerCount = 0;
 var slavesCount = 0;
 var t14sCount = 0;
-//price of autoclickers
-let autoPrice = 10;
-//price of slaves
-let slavePrice =  200;
-//price of t14
-let t14Price = 10000;
 
+//prices
+let autoPrice = 10;
+let slavePrice =  200;
+let t14Price = 10000;
 
 //get button info
 var x = document.getElementById("aclick");
 var y = document.getElementById("granny");
 var z = document.getElementById("t14");
+
 //hide purchase buttons
 x.style.display = "none";
 y.style.display = "none";
 z.style.display = "none";
 
-//adding count functions---------------------------------------------------------------------------------------------------------------------------------------------
+
 //count function
 const add = (function () {
   return function () {
     hideShow();
-    counter += 1; return counter;
+    counter += 1; return counter.toFixed(2);
      
   }
 })();
   
-
 //autoclick function
 const run = (function(){
   return function() {
     hideShow();
-    counter += 1; return counter;}
+    counter += 1; return counter.toFixed(2);}
 })();
 
 //slave function
 const nan = (function(){
-  return function() {hideShow(); counter += 50; return counter;}
+  return function() {hideShow(); counter += 50; return counter.toFixed(2);}
 })();
-
-//buy autoclick
-const purchase = (function(){
-    return function() {counter -= autoPrice; autoPrice = autoPrice/0.75; return counter; }
-})();
-
-
-//buy slave
-const purchases = (function(){
-    return function() {counter -= slavePrice; slavePrice = slavePrice/0.75; return counter;}
-})();
-
 
 //tank function
 const bang = (function(){
-  return function() {hideShow() ;counter += 500; return counter;}
+  return function() {hideShow() ;counter += 500; return counter.toFixed(2);}
+})();
+
+
+
+
+//buy autoclick
+const purchase = (function(){
+    return function() {counter -= autoPrice; autoPrice = autoPrice/0.75; autoPrice = autoPrice.toFixed(2); return counter; }
+})();
+
+//buy slave
+const purchases = (function(){
+    return function() {counter -= slavePrice; slavePrice = math.round(slavePrice/0.75); return counter;}
 })();
 
 //buy tank
 const purchasen = (function(){
-    return function() {counter -= t14Price; t14Price = t14Price/0.75; return counter;}
+    return function() {counter -= t14Price; t14Price = math.round(t14Price/0.75); return counter;}
 })();
+
+
+
+
 
 //Track how many clickers bought--------------------------------------------------------------------------------------------------------------------
 
@@ -108,6 +137,8 @@ const slaveCounter = (function () {
 const t14Counter = (function () {
   return function () {t14sCount += 1; return t14sCount;}
 })();
+
+
 //button click process-----------------------------------------------------------------------------------------------------------------------------------------
 
 //user clicks count
