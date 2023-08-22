@@ -15,7 +15,9 @@ Need to add animation to button like '+1' appearing.
 
 Need to remove border round images.
 
-Need to find better images.
+Need to add upgrades to shop.
+
+Need to finish boss fight scene
 
 Need to stop user being able to TAB onto a button and holding enter.
 
@@ -23,6 +25,12 @@ Need to fix bug where autoclicker stays avaiable for purchase, when the user has
 
 ## Changelog
 
+### Version 0.3
+Changed UI - Shop is on right and assets appear below as they are bought
+
+Changed theme of game to a war game.
+
+Added a boss fight which is triggered every 2 minutes. - Damage is based on army size.
 ### Version 0.2
 Added a background color.
 
