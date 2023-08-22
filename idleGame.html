@@ -143,7 +143,7 @@ body {background-color: #51D6D2;}
 </div>
 <script>
 
-setInterval(displayBoss, 10000);
+setInterval(displayBoss, 90000);
 let currentSlaveCount = 0;
 let currentTankCount = 0;
 
@@ -181,7 +181,7 @@ document.getElementById("bossfight").style.display = 'block';
       let damage = slavesCount + t14sCount;
       elem.value -= damage; 
   }
-  setInterval(displayGame, 10000);
+  setInterval(displayGame, 90000);
 }
 
 function displayGame(){
@@ -190,7 +190,7 @@ function displayGame(){
         document.getElementById("bossfight").style.visibility = 'hidden';
 	document.getElementById("mainGame").style.visibility = 'visible';
 	document.getElementById("mainGame").style.display='block';
-        setInterval(displayBoss, 10000);
+        setInterval(displayBoss, 90000);
 }
 
 
