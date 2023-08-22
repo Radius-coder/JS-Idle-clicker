@@ -1,7 +1,8 @@
 ## What is it
 It is an idle clicker web-based game. It uses counters to track money and buttons to increase the counters. Prices of counters increase as the user buys more. Buttons are hidden if the user does not have enough.
 
-![image](https://user-images.githubusercontent.com/67561957/221523572-424ecf08-d270-4950-9bba-25d1f0e000b2.png)
+![image](https://github.com/Radius-coder/JS-Idle-clicker/assets/67561957/b9788035-8927-41c5-acd8-21a8884c24f4)
+
 
 ## What needs added
 Add music and sounds.
