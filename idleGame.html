@@ -69,7 +69,7 @@ body {background-color: #51D6D2;}
    </br></br></br></br></br></br></br></br></br>
    </div>
   </div>
-  <progress id="progress-bar" value="10000" max="10000" style="padding-right: 600px;"></progress>
+  <progress id="progress-bar" value="100000" max="100000" style="padding-right: 600px;"></progress>
   <div class="column2">
    
    <img src="boss.gif"></img>
@@ -143,39 +143,52 @@ body {background-color: #51D6D2;}
 </div>
 <script>
 
-setInterval(displayBoss, 150000);
-
+setInterval(displayBoss, 10000);
+var currentSlaveCount = 0;
+var currentTankCount = 0;
+var newSlaveCount = slavesCount-currentSlaveCount;
+var newTankCount = t14sCount-currentTankCount;
 function displayBoss() {
   document.getElementById("mainGame").style.visibility = 'hidden';
+  document.getElementById("mainGame").style.display='none';
   document.getElementById("bossfight").style.visibility = 'visible';
   document.getElementById("bossfight").style.display = 'block';
-  for(i=0;i<slavesCount;i++){
+  if(currentSlaveCount < slavesCount){
+  for(i=0;i<newSlaveCount;i++){
   var elem = document.createElement("img");
   elem.src = 'slave.png';
   elem.setAttribute("height", "60");
   elem.setAttribute("width", "40");
   document.getElementById("army").appendChild(elem);
+  currentSlaveCount += 1;
   } 
-  for(i=0;i<t14sCount;i++){
+  }
+  if(currentTankCount < t14sCount){
+  for(i=0;i<newTankCount;i++){
   var elem = document.createElement("img");
   elem.src = 'tank.png';
   elem.setAttribute("height", "60");
   elem.setAttribute("width", "60");
   document.getElementById("army").appendChild(elem);
+  currentTankCount += 1;
   } 
+  }
   var elem = document.getElementById("progress-bar");   
   var id = setInterval(frame, 1000);
   function frame() {
       let damage = slavesCount + t14sCount;
       elem.value -= damage; 
   }
-  setInterval(displayGame, 100000);
+  setInterval(displayGame, 10000);
 }
 
 function displayGame(){
+        document.getElementById("progress-bar").value = 100000;
  	document.getElementById("bossfight").style.display='none';
         document.getElementById("bossfight").style.visibility = 'hidden';
 	document.getElementById("mainGame").style.visibility = 'visible';
+	document.getElementById("mainGame").style.display='block';
+        setInterval(displayBoss, 10000);
 }
 
 
