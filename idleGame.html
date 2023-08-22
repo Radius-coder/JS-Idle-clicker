@@ -1,58 +1,184 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
+
+* {
+  box-sizing: border-box;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Create two equal columns that floats next to each other */
+.column2 {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row2:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 h2 {text-align: center;}
 p {text-align: center;}
 table {margin-left: auto; margin-right: auto;}
 body {background-color: #51D6D2;}
+.center {
+  margin: 0;
+  position: block;
+  -ms-transform: translate(100%, 100%);
+  transform: translate(100%, 100%);
+}
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #45BAB7;
+   text-align: center;
+}
+
 </style>
 </head>
 <body>
+<div id="bossfight" style="display: none">
+</br></br></br></br></br></br></br></br></br></br></br></br></br>
+ <div class="row2">
+  <div class="column2">
+   
+   <div id="army">
+   </br></br></br></br></br></br></br></br></br>
+   </div>
+  </div>
+  <progress id="progress-bar" value="10000" max="10000" style="padding-right: 600px;"></progress>
+  <div class="column2">
+   
+   <img src="boss.gif"></img>
+  </div>
+ </div>
+</div>
 
+<div id="mainGame">
+
+<div class="row">
+<div class="column">
+</div>
+<div class="column">
 <h2>jClicker</h2>
 
 <p>It's every idle clicker ever.</p>
-
-<!--buttons-->
-<div style="text-align: center">
- <button type="button" onclick="myFunction()"><img src="count.png" title="+1" alt="+1"; style="height:60px; width:60px";></button>
- <button type="button" id="aclick" onclick="setInterval(autoClick, 2000); autoClickBuy(); autoClickCount();"><img src="cursor.png" title="Autoclicker" alt="Buy Autoclicker"; style="height:60px; width:60px";></button>
- <button type="button" id="granny" onclick="setInterval(autoClicker, 1000); autoClickerBuy(); autoClickerCount();"><img src="slave.png" title="Miner" alt="Buy Miner"; style="height:60px; width:60px";></button>
- <button type="button" id="t14" onclick="setInterval(tank, 500); tankBuy(); tankCount();"><img src="tank.png" title="Tank" alt="Buy Tank"; style="height:60px; width:60px";></button>
-</div>
+</br>
+<h2>Money:</h2></br>
+<p id="count">0</p>
+</br></br>
 
 <!--counter output--> 
-<p>Money:</p>
-<p id="count">0</p>
-
 <div style="margin: 0px auto">
 <table>
  <tr>
-  <th>Autoclickers:</th>
-  <th>Slaves:</th>
-  <th>T14 Heavy Tanks:</th>
- </tr>
- <tr>
-  <th id="clickCount">0</th>
-  <th id="slaveCount">0</th>
-  <th id="t14Count">0</th>
- </tr>
- <tr><th><br></th></tr>
- <tr>
   <th>Autoclicker price:</th>
-  <th>Slave price:</th>
-  <th>T14 price:</th>
+  <th>Soilder price:</th>
+  <th>Tank price:</th>
  </tr>
  <tr>
   <th id ="autopriceOut">10</th>
   <th id ="slavepriceOut">200</th>
   <th id ="t14priceOut">10000</th>
+ </tr>
 </table>
 </div>
+</br></br></br></br></br></br>
+<!--buttons-->
+<div style="text-align: center;">
+ <button type="button" onclick="myFunction()"><img src="count.png" title="+1" alt="+1"; style="height:60px; width:60px";></button>
+</div>
+</div>
 
+<div style="float: right; padding-right: 200px; background-color: #45BAB7; height:920px;">
+<div style="text-align: center;width: 100%;">
+ <h2 stlye="position: fixed; display: inline-block; text-align: center;"> Shop:</h2>
+ <div class="center">
+ <button type="button" style="right:150px" id="aclick" onclick="setInterval(autoClick, 2000); autoClickBuy(); autoClickCount();"><img src="cursor.png" title="Autoclicker" alt="Buy Autoclicker"; style="height:60px; width:60px; ";></button>
+ </div>
+</div>
+</br>
+<div class="center">
+ <button type="button" id="granny" onclick="setInterval(autoClicker, 1000); autoClickerBuy(); autoClickerCount();"><img src="slave.png" title="Miner" alt="Buy Miner"; style="height:60px; width:60px; ";></button>
+</div>
+</br>
+<div class="center">
+ <button type="button" id="t14" onclick="setInterval(tank, 500); tankBuy(); tankCount();"><img src="tank.png" title="Tank" alt="Buy Tank"; style="height:60px; width:60px";></button>
+</div>
+</div>
 
+</div>
+
+<div class="footer">
+<div id="autoclickers">
+</div>
+<div id="miners">
+</div>
+<div id="tanks">
+</div>
+</div>
+</div>
 <script>
+
+setInterval(displayBoss, 150000);
+
+function displayBoss() {
+  document.getElementById("mainGame").style.visibility = 'hidden';
+  document.getElementById("bossfight").style.visibility = 'visible';
+  document.getElementById("bossfight").style.display = 'block';
+  for(i=0;i<slavesCount;i++){
+  var elem = document.createElement("img");
+  elem.src = 'slave.png';
+  elem.setAttribute("height", "60");
+  elem.setAttribute("width", "40");
+  document.getElementById("army").appendChild(elem);
+  } 
+  for(i=0;i<t14sCount;i++){
+  var elem = document.createElement("img");
+  elem.src = 'tank.png';
+  elem.setAttribute("height", "60");
+  elem.setAttribute("width", "60");
+  document.getElementById("army").appendChild(elem);
+  } 
+  var elem = document.getElementById("progress-bar");   
+  var id = setInterval(frame, 1000);
+  function frame() {
+      let damage = slavesCount + t14sCount;
+      elem.value -= damage; 
+  }
+  setInterval(displayGame, 100000);
+}
+
+function displayGame(){
+ 	document.getElementById("bossfight").style.display='none';
+        document.getElementById("bossfight").style.visibility = 'hidden';
+	document.getElementById("mainGame").style.visibility = 'visible';
+}
+
+
 //counter
 var counter = 0;
 
@@ -60,6 +186,8 @@ var counter = 0;
 var clickerCount = 0;
 var slavesCount = 0;
 var t14sCount = 0;
+
+
 
 //prices
 let autoPrice = 10;
@@ -152,7 +280,15 @@ function autoClick(){
 }
 //if user has money then buy autoclicker
 function autoClickBuy(){
-  if(counter>=autoPrice){document.getElementById("count").innerHTML = purchase();document.getElementById("autopriceOut").innerHTML = autoPrice;}
+  if(counter>=autoPrice){document.getElementById("count").innerHTML = purchase();document.getElementById("autopriceOut").innerHTML = autoPrice;
+	var elem = document.createElement("img");
+	elem.src = 'cursor.png';
+        elem.setAttribute("height", "60");
+        elem.setAttribute("width", "40");
+	document.getElementById("autoclickers").appendChild(elem);
+
+  }
+  
 }
 function autoClickCount(){
 	document.getElementById("clickCount").innerHTML = clickCounter();
@@ -166,7 +302,13 @@ function autoClicker(){
 }
 //if user has money then buy slave
 function autoClickerBuy(){
-  if(counter>=slavePrice){document.getElementById("count").innerHTML = purchases();document.getElementById("slavepriceOut").innerHTML = slavePrice;}
+  if(counter>=slavePrice){document.getElementById("count").innerHTML = purchases();document.getElementById("slavepriceOut").innerHTML = slavePrice;
+	var elem = document.createElement("img");
+	elem.src = 'slave.png';
+        elem.setAttribute("height", "60");
+        elem.setAttribute("width", "40");
+	document.getElementById("miners").appendChild(elem);
+  }
 }
 function autoClickerCount(){
 	document.getElementById("slaveCount").innerHTML = slaveCounter();
@@ -178,7 +320,13 @@ function tank(){
 }
 //if user has money then buy slave
 function tankBuy(){
-  if(counter>=t14Price){document.getElementById("count").innerHTML = purchasen();document.getElementById("t14priceOut").innerHTML = t14Price;}
+  if(counter>=t14Price){document.getElementById("count").innerHTML = purchasen();document.getElementById("t14priceOut").innerHTML = t14Price;
+	var elem = document.createElement("img");
+	elem.src = 'tank.png';
+        elem.setAttribute("height", "60");
+        elem.setAttribute("width", "60");
+	document.getElementById("tanks").appendChild(elem);
+  }
 }
 function tankCount(){
 	document.getElementById("t14Count").innerHTML = t14Counter();
