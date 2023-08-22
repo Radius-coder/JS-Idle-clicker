@@ -144,17 +144,20 @@ body {background-color: #51D6D2;}
 <script>
 
 setInterval(displayBoss, 10000);
-var currentSlaveCount = 0;
-var currentTankCount = 0;
-var newSlaveCount = slavesCount-currentSlaveCount;
-var newTankCount = t14sCount-currentTankCount;
+let currentSlaveCount = 0;
+let currentTankCount = 0;
+
+
 function displayBoss() {
-  document.getElementById("mainGame").style.visibility = 'hidden';
-  document.getElementById("mainGame").style.display='none';
-  document.getElementById("bossfight").style.visibility = 'visible';
-  document.getElementById("bossfight").style.display = 'block';
-  if(currentSlaveCount < slavesCount){
-  for(i=0;i<newSlaveCount;i++){
+
+
+document.getElementById("mainGame").style.visibility = 'hidden';
+document.getElementById("mainGame").style.display='none';
+document.getElementById("bossfight").style.visibility = 'visible';
+document.getElementById("bossfight").style.display = 'block';
+
+ for(i=currentSlaveCount;i<slavesCount;i++){
+  console.log("ENTERED LOOP");
   var elem = document.createElement("img");
   elem.src = 'slave.png';
   elem.setAttribute("height", "60");
@@ -162,17 +165,16 @@ function displayBoss() {
   document.getElementById("army").appendChild(elem);
   currentSlaveCount += 1;
   } 
-  }
-  if(currentTankCount < t14sCount){
-  for(i=0;i<newTankCount;i++){
+  
+  for(i=currentTankCount;i<t14sCount;i++){
   var elem = document.createElement("img");
   elem.src = 'tank.png';
   elem.setAttribute("height", "60");
   elem.setAttribute("width", "60");
   document.getElementById("army").appendChild(elem);
   currentTankCount += 1;
-  } 
   }
+
   var elem = document.getElementById("progress-bar");   
   var id = setInterval(frame, 1000);
   function frame() {
