@@ -49,7 +49,7 @@ body {background-color: #51D6D2;}
   transform: translate(100%, 100%);
 }
 .footer {
-   position: fixed;
+   position: absolute;
    left: 0;
    bottom: 0;
    width: 100%;
@@ -66,7 +66,7 @@ body {background-color: #51D6D2;}
   <div class="column2">
    
    <div id="army">
-   </br></br></br></br></br></br></br></br></br>
+   </br></br></br></br></br></br></br>
    </div>
   </div>
   <progress id="progress-bar" value="100000" max="100000" style="padding-right: 600px;"></progress>
@@ -83,10 +83,7 @@ body {background-color: #51D6D2;}
 <div class="column">
 </div>
 <div class="column">
-<h2>jClicker</h2>
 
-<p>It's every idle clicker ever.</p>
-</br>
 <h2>Money:</h2></br>
 <p id="count">0</p>
 </br></br>
@@ -106,16 +103,16 @@ body {background-color: #51D6D2;}
  </tr>
 </table>
 </div>
-</br></br></br></br></br></br>
+</br></br></br>
 <!--buttons-->
 <div style="text-align: center;">
  <button type="button" onclick="myFunction()"><img src="count.png" title="+1" alt="+1"; style="height:60px; width:60px";></button>
 </div>
 </div>
 
-<div style="float: right; padding-right: 200px; background-color: #45BAB7; height:920px;">
+<div style="float: right; padding-right: 200px; border-left-style: solid; height: 97vh; background-color: #45BAB7;">
 <div style="text-align: center;width: 100%;">
- <h2 stlye="position: fixed; display: inline-block; text-align: center;"> Shop:</h2>
+ <h2 stlye="position: fixed; display: inline-block; text-align: center;">‎‎‎‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎Shop:</h2>
  <div class="center">
  <button type="button" style="right:150px" id="aclick" onclick="setInterval(autoClick, 2000); autoClickBuy(); autoClickCount();"><img src="cursor.png" title="Autoclicker" alt="Buy Autoclicker"; style="height:60px; width:60px; ";></button>
  </div>
@@ -142,15 +139,15 @@ body {background-color: #51D6D2;}
 </div>
 </div>
 <script>
-
+console.log("Start script");
 setInterval(displayBoss, 90000);
+setInterval(displayGame, 130000);
 let currentSlaveCount = 0;
 let currentTankCount = 0;
 
 
 function displayBoss() {
-
-
+console.log("Start displayBoss");
 document.getElementById("mainGame").style.visibility = 'hidden';
 document.getElementById("mainGame").style.display='none';
 document.getElementById("bossfight").style.visibility = 'visible';
@@ -179,18 +176,20 @@ document.getElementById("bossfight").style.display = 'block';
   var id = setInterval(frame, 1000);
   function frame() {
       let damage = slavesCount + t14sCount;
-      elem.value -= damage; 
+      elem.value -= damage;
+      if(elem.value <= 0){
+	counter += 500000;
+      } 
   }
-  setInterval(displayGame, 90000);
 }
 
 function displayGame(){
+	console.log("Start displayGame");
         document.getElementById("progress-bar").value = 100000;
  	document.getElementById("bossfight").style.display='none';
         document.getElementById("bossfight").style.visibility = 'hidden';
 	document.getElementById("mainGame").style.visibility = 'visible';
 	document.getElementById("mainGame").style.display='block';
-        setInterval(displayBoss, 90000);
 }
 
 
