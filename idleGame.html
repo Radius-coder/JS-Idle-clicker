@@ -41,7 +41,7 @@
 h2 {text-align: center;}
 p {text-align: center;}
 table {margin-left: auto; margin-right: auto;}
-body {background-color: #51D6D2;}
+body {background-color: #3a8530;}
 .center {
   margin: 0;
   position: block;
@@ -49,11 +49,11 @@ body {background-color: #51D6D2;}
   transform: translate(100%, 100%);
 }
 .footer {
-   position: absolute;
+   position: block;
    left: 0;
    bottom: 0;
    width: 100%;
-   background-color: #45BAB7;
+   background-color: #285e21;
    text-align: center;
 }
 
@@ -61,12 +61,12 @@ body {background-color: #51D6D2;}
 </head>
 <body>
 <div id="bossfight" style="display: none">
-</br></br></br></br></br></br></br></br></br></br></br></br></br>
+</br>
  <div class="row2">
   <div class="column2">
    
    <div id="army">
-   </br></br></br></br></br></br></br>
+   </br>
    </div>
   </div>
   <progress id="progress-bar" value="100000" max="100000" style="padding-right: 600px;"></progress>
@@ -110,7 +110,7 @@ body {background-color: #51D6D2;}
 </div>
 </div>
 
-<div style="float: right; padding-right: 200px; border-left-style: solid; height: 97vh; background-color: #45BAB7;">
+<div style="float: right; padding-right: 200px; height: 65vh;">
 <div style="text-align: center;width: 100%;">
  <h2 stlye="position: fixed; display: inline-block; text-align: center;">‎‎‎‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎Shop:</h2>
  <div class="center">
@@ -119,7 +119,7 @@ body {background-color: #51D6D2;}
 </div>
 </br>
 <div class="center">
- <button type="button" id="granny" onclick="setInterval(autoClicker, 1000); autoClickerBuy(); autoClickerCount();"><img src="slave.png" title="Miner" alt="Buy Miner"; style="height:60px; width:60px; ";></button>
+ <button type="button" id="granny" onclick="setInterval(autoClicker, 1000); autoClickerBuy(); autoClickerCount();"><img src="soldier_idle.gif" title="Miner" alt="Buy Miner"; style="height:60px; width:60px; ";></button>
 </div>
 </br>
 <div class="center">
@@ -147,6 +147,8 @@ let currentTankCount = 0;
 
 
 function displayBoss() {
+
+document.getElementById("progress-bar").value = 100000;
 console.log("Start displayBoss");
 document.getElementById("mainGame").style.visibility = 'hidden';
 document.getElementById("mainGame").style.display='none';
@@ -156,9 +158,9 @@ document.getElementById("bossfight").style.display = 'block';
  for(i=currentSlaveCount;i<slavesCount;i++){
   console.log("ENTERED LOOP");
   var elem = document.createElement("img");
-  elem.src = 'slave.png';
+  elem.src = 'soldier_shoot.gif';
   elem.setAttribute("height", "60");
-  elem.setAttribute("width", "40");
+  elem.setAttribute("width", "60");
   document.getElementById("army").appendChild(elem);
   currentSlaveCount += 1;
   } 
@@ -185,7 +187,6 @@ document.getElementById("bossfight").style.display = 'block';
 
 function displayGame(){
 	console.log("Start displayGame");
-        document.getElementById("progress-bar").value = 100000;
  	document.getElementById("bossfight").style.display='none';
         document.getElementById("bossfight").style.visibility = 'hidden';
 	document.getElementById("mainGame").style.visibility = 'visible';
@@ -297,8 +298,8 @@ function autoClickBuy(){
   if(counter>=autoPrice){document.getElementById("count").innerHTML = purchase();document.getElementById("autopriceOut").innerHTML = autoPrice;
 	var elem = document.createElement("img");
 	elem.src = 'cursor.png';
-        elem.setAttribute("height", "60");
-        elem.setAttribute("width", "40");
+        elem.setAttribute("height", "40");
+        elem.setAttribute("width", "30");
 	document.getElementById("autoclickers").appendChild(elem);
 
   }
@@ -314,11 +315,11 @@ function autoClickCount(){
 function autoClicker(){
   document.getElementById("count").innerHTML = nan();
 }
-//if user has money then buy slave
+//if user has money then buy 
 function autoClickerBuy(){
   if(counter>=slavePrice){document.getElementById("count").innerHTML = purchases();document.getElementById("slavepriceOut").innerHTML = slavePrice;
 	var elem = document.createElement("img");
-	elem.src = 'slave.png';
+	elem.src = 'soldier_idle.gif';
         elem.setAttribute("height", "60");
         elem.setAttribute("width", "40");
 	document.getElementById("miners").appendChild(elem);
